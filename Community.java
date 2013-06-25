@@ -2,7 +2,6 @@ package kinglem.Multitudes
 
 import kinglem.Multitudes.Family;
 
-<<<<<<< HEAD
 class Community extends Family{
 	short id;
 	List<short> relationships = new ArrayList<short>();
@@ -23,5 +22,4 @@ class Community extends Family{
 		relationships.
 
 	}
->>>>>>> test
 }
