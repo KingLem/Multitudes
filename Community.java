@@ -4,14 +4,15 @@ import kinglem.Multitudes.Family;
 
 	/**
 	*	What does this class need to do? 
-	*		-Keep track of the community's ID
-	*		-Keep track of community's center coordinate (and radius?)
-	*		-Allow families to be added to the community
-	*		-Manages change
+	*		-Keep track of the Community's ID
+	*		-Keep track of Community's center coordinate (villagers control how far away they settle)
+	*		-Allow families to be added to/removed from the Community
+	*		-Manages changes to how much this Community likes other Family-extended objects
 	*/
 
 class Community extends Family{
 	// id structure: {indv}{faml}{comm}{trib}{natn}{frendval}{????}
+	private HashMap<int,Family> relationships = new HashMap<int,Family>();
 
 	//Gets called when two or more families create a new community
 	public Community(Family family1, Family family2){
@@ -29,10 +30,6 @@ class Community extends Family{
 		relationships.add(family1.getId(),family1);
 		relationships.add(family2.getId(),family2);
 
-	}
-
-	public int getId(){
-		return id;
 	}
 
 	//setId only called when adding community to a tribe
@@ -101,7 +98,7 @@ class Community extends Family{
 			fVal = 256;
 		}else if(amount + fVal < 0){
 			fVal = 0;
-		}else{
+		}else{ //Otherwise, add fVal to amount and assign to fVal
 			fVal += amount;
 		}
 
